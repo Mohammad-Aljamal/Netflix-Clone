@@ -4,24 +4,30 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import ModalMovie from './ModalMovie';
 import { useState } from 'react';
+
 function Movie(props) {
+
   const [showModal,setShowModal] = useState(false);
   const [passItemToModal,setPassItemToModal] = useState ({});
+
   const handelShowModal = (item) =>{
     setShowModal(true);
     setPassItemToModal(item);
   }
+
   const handleClose = () =>{
     setShowModal(false)
   }
 
+
+
   return (
     <>
      <Row xs={1} md={4} className="g-4">
-      {Array.from({ length: 4 }).map((_, idx) => (
-        <Col>
-          <Card>
-            <Card.Img variant="top" src={props.movieData.poster_path} />
+     {Array.from({ length: 1 }).map((_, idx) => (
+        <Col key={idx}>
+          <Card >
+            <Card.Img variant="top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${props.movieData.poster_path}`} />
             <Card.Body>
               <Card.Title><h3>{props.movieData.title}</h3></Card.Title>
               <Card.Text>
@@ -35,7 +41,7 @@ function Movie(props) {
       ))}
     </Row>
 
-    <ModalMovie showFlag={showModal} item={passItemToModal} handleClose={handleClose}/>
+    <ModalMovie showFlag={showModal} item={passItemToModal} handleClose={handleClose} />
     </>
   );
 }

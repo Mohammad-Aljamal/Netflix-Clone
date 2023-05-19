@@ -1,10 +1,11 @@
 import Movie from "./Movie";
 function MovieList(props) {
+
   
   return (
-    <>
+    <>    
       {props.trendingMovies.map((item, idx) => {
-        return <Movie movieData={item} />;
+        return <Movie movieData={item}/>;
       })}
     </>
   );
